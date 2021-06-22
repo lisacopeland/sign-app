@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "sign-app"
+  "defaultProject": "sign-app",
+  "cli": {
+    "analytics": false
+  }
 }
