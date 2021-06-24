@@ -7,10 +7,12 @@ import { SignaturePad } from 'angular2-signaturepad';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('checkbox', { static: true }) checkbox: ElementRef;
   @ViewChild('wrapper', { read: ElementRef, static: false }) wrapper: ElementRef;
 
   @ViewChild(SignaturePad, { static: false }) signaturePad: SignaturePad;
   title = 'sign-app';
+  checkBoxEl;
 
   showPad = false;
   signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
@@ -19,6 +21,12 @@ export class AppComponent {
     'canvasHeight': 300,
     'throttle': 5
   };
+
+  constructor(private elRef: ElementRef) {}
+
+  ngOnInit() {
+    this.checkBoxEl = this.checkbox.nativeElement;
+  }
 
   ngAfterViewInit() {
     // this.signaturePad is now available
@@ -38,6 +46,14 @@ export class AppComponent {
       // })
 
     }
+  }
+
+  closeMenuButton() {
+    this.checkBoxEl.click();
+  }
+
+  onToggleMenu($event) {
+    console.log('menu toggled! ', $event);
   }
 
   drawComplete() {

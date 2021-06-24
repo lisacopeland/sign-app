@@ -1,7 +1,37 @@
-<button (click)="togglePad()">Click me</button>
+<nav role="navigation">
+  <div id="menuToggle">
+    <input #checkbox type="checkbox" (click)="onToggleMenu($event)" />
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <ul id="menu">
+      <a href="#">
+        <li>Home</li>
+      </a>
+      <a (click)="togglePad()">
+        <li>Signature</li>
+      </a>
+      <a href="#">
+        <li>Info</li>
+      </a>
+      <a href="#">
+        <li>Contact</li>
+      </a>
+      <a href="#">
+        <li>Show me more</li>
+      </a>
+    </ul>
+  </div>
+</nav>
+
 <div *ngIf="showPad">
   <div #wrapper class="display-box">
     <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
     </signature-pad>
   </div>
 </div>
+
+<button class="close-menu" (click)="closeMenuButton()">
+  Toggle the Menu
+</button>
