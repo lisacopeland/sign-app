@@ -13,7 +13,6 @@ export class AppComponent {
   @ViewChild(SignaturePad, { static: false }) signaturePad: SignaturePad;
   title = 'sign-app';
   checkBoxEl;
-
   showPad = false;
   signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'minWidth': 5,
@@ -21,6 +20,15 @@ export class AppComponent {
     'canvasHeight': 300,
     'throttle': 5
   };
+
+  menu = [
+    { "url": "/home", "text": { "value": "Home", "translations": {} } },
+    {
+      "url": "https://democracylive.com/",
+      "text": { "value": "Contact", "translations": {} }
+    },
+    { "url": "/about", "text": { "value": "About", "translations": {} } },
+  ];
 
   constructor(private elRef: ElementRef) {}
 

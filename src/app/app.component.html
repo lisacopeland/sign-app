@@ -5,22 +5,12 @@
     <span></span>
     <span></span>
 
-    <ul id="menu">
-      <a href="#">
-        <li>Home</li>
-      </a>
-      <a (click)="togglePad()">
-        <li>Signature</li>
-      </a>
-      <a href="#">
-        <li>Info</li>
-      </a>
-      <a href="#">
-        <li>Contact</li>
-      </a>
-      <a href="#">
-        <li>Show me more</li>
-      </a>
+    <ul id="menu" class="nav-menu">
+      <li *ngFor="let item of menu">
+        <a href="item.url">
+          {{item.text.value}}
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -33,5 +23,5 @@
 </div>
 
 <button class="close-menu" (click)="closeMenuButton()">
-  Toggle the Menu
+  <i class="fa fa-coffee fa-2x"></i>Toggle the Menu
 </button>

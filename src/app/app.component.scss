@@ -5,6 +5,11 @@
   border: 1px solid red;
 }
 
+i {
+  color: blue;
+  background-color: white;
+}
+
 .close-menu {
   display: block;
   position: relative;
@@ -14,6 +19,8 @@
 #menuToggle
 {
   display: block;
+  background-color: black;
+  color: white;
   position: relative;
   top: 50px;
   left: 50px;
@@ -28,13 +35,25 @@
 {
   text-decoration: none;
   color: #232323;
-  
+  padding: 1em;
+  font-size: 1em;
+  line-height: 1;
   transition: color 0.3s ease;
 }
 
-#menuToggle a:hover
+#menuToggle a:hover, a:focus, a:focus.focus
 {
-  color: tomato;
+    text-decoration: none;
+    color: white;
+    outline: none !important;
+}
+
+#menuToggle li:hover, li:focus, li:focus.focus
+{
+    text-decoration: none;
+    color: white;
+    background-color: #666;
+    outline: none !important;
 }
 
 #menuToggle input
@@ -64,7 +83,7 @@
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #cdcdcd;
+  background: white;
   border-radius: 3px;
   
   z-index: 1;
@@ -122,10 +141,10 @@
 {
   position: absolute;
   background-color: antiquewhite;
-  width: 300px;
+  width: 150px;
   margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
+  padding: 25px;
+  padding-top: 100px;
   
   background: #ededed;
   list-style-type: none;
