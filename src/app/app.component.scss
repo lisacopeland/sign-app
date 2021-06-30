@@ -51,6 +51,11 @@
   color: #fff;
   background-color: #333;
 
+  #menu {
+    display: flex;
+    flex-direction: row;
+  }
+
   ul {
     display: inline-block;
     padding: 0;
@@ -84,10 +89,6 @@
   }
 }
 
-#menu {
-  display: flex;
-  flex-direction: row;
-}
 
 @media screen and (max-width: 700px) {
   .menu-row {
@@ -114,14 +115,7 @@
       user-select: none;
     }
 
-    a {
-      text-decoration: none;
-/*       color: #232323; */
-      color: purple;
-      font-size: 1em;
-      line-height: 1;
-      transition: color 0.3s ease;
-    }
+
 
     #menuToggle input {
       display: block;
@@ -215,6 +209,14 @@
 
       transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     }
+
+    #menu a {
+      text-decoration: none;
+      color: #232323;
+      font-size: 1em;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }    
 
     #menu li {
       /*   padding: 5px 0; */
