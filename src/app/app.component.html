@@ -1,48 +1,51 @@
   <div>
     <h2 class="element-invisible skip-focus">Main Menu</h2>
     <ng-container *ngIf="smallScreen; else bigScreen">
-      <div class="small-menu">
-      <nav role="navigation">
-        <div id="menuToggle">
-          <input #checkbox type="checkbox"/>
-          <span></span>
-          <span></span>
-          <span></span>
-      
-        <ul id="menu" class="nav-menu">
-          <li *ngFor="let item of menu">
-            <a href="item.url">
-              {{item.text.value}}
-            </a>
-          </li>
-        </ul>
-        </div>
-      </nav>
+      <div class="menu-row">
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input #checkbox type="checkbox"/>
+            <span></span>
+            <span></span>
+            <span></span>
+        
+          <ul id="menu">
+            <li *ngFor="let item of menu">
+              <a href="item.url">
+                {{item.text.value}}
+              </a>
+            </li>
+          </ul>
+          </div>
+        </nav>
 
-      <!-- The session label -->
-      <div class="voter-info">
-        <a>Sample User</a><a>|</a>
-        <a>End Session</a>
+        <!-- The session label -->
+        <div class="voter-info">
+          <a>Sample User</a><a>|</a>
+          <a>End Session</a>
+        </div>
       </div>
-    </div>
       
     </ng-container>
 
     <!-- Big Menu -->
     <ng-template #bigScreen>
-      <nav>
-        <ul id="menu" class="nav-menu">
-          <li *ngFor="let item of menu">
-            <a href="item.url">
-              {{item.text.value}}
-            </a>
-          </li>
-        </ul>
+      <div class="menu-row">
+        <nav>
+          <ul id="menu">
+            <li *ngFor="let item of menu">
+              <a href="item.url">
+                {{item.text.value}}
+              </a>
+            </li>
+          </ul>
+
+        </nav>
         <div class="voter-info">
           <a>Sample User</a><a>|</a>
           <a>End Session</a>
-        </div>
-      </nav>
+        </div>      
+      </div>      
     </ng-template>
 
   </div>
