@@ -1,3 +1,4 @@
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad';
 
@@ -7,11 +8,13 @@ import { SignaturePad } from 'angular2-signaturepad';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('checkbox', { static: true }) checkbox: ElementRef;
+  // @ViewChild('checkbox', { static: true }) checkbox: ElementRef;
   @ViewChild('wrapper', { read: ElementRef, static: false }) wrapper: ElementRef;
 
   @ViewChild(SignaturePad, { static: false }) signaturePad: SignaturePad;
   title = 'sign-app';
+  bigMenu = true;
+  smallScreen = false;
   checkBoxEl;
   showPad = false;
   signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
@@ -30,10 +33,17 @@ export class AppComponent {
     { "url": "/about", "text": { "value": "About", "translations": {} } },
   ];
 
-  constructor(private elRef: ElementRef) {}
+  constructor(private elRef: ElementRef,
+              private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver
+      .observe(['(min-width: 700px)'])
+      .subscribe((state: BreakpointState) => {
+        this.smallScreen = !state.matches;
+      });
+              }
 
   ngOnInit() {
-    this.checkBoxEl = this.checkbox.nativeElement;
+    // this.checkBoxEl = this.checkbox.nativeElement;
   }
 
   ngAfterViewInit() {
@@ -57,11 +67,17 @@ export class AppComponent {
   }
 
   closeMenuButton() {
-    this.checkBoxEl.click();
+    // this.checkBoxEl.click();
   }
 
-  onToggleMenu($event) {
-    console.log('menu toggled! ', $event);
+  toggleMenuButton() {
+    console.log('menu toggled! ');
+    this.bigMenu = !this.bigMenu;
+    if (!this.bigMenu) {
+      setTimeout(() => {
+        // this.checkBoxEl = this.checkbox.nativeElement;
+      }, 100)
+    }
   }
 
   drawComplete() {

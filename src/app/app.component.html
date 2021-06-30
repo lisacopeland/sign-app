@@ -1,19 +1,72 @@
+  <div>
+    <h2 class="element-invisible skip-focus">Main Menu</h2>
+    <ng-container *ngIf="smallScreen; else bigScreen">
+      <div class="small-menu">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <input #checkbox type="checkbox"/>
+          <span></span>
+          <span></span>
+          <span></span>
+      
+        <ul id="menu" class="nav-menu">
+          <li *ngFor="let item of menu">
+            <a href="item.url">
+              {{item.text.value}}
+            </a>
+          </li>
+        </ul>
+        </div>
+      </nav>
+
+      <!-- The session label -->
+      <div class="voter-info">
+        <a>Sample User</a><a>|</a>
+        <a>End Session</a>
+      </div>
+    </div>
+      
+    </ng-container>
+
+    <!-- Big Menu -->
+    <ng-template #bigScreen>
+      <nav>
+        <ul id="menu" class="nav-menu">
+          <li *ngFor="let item of menu">
+            <a href="item.url">
+              {{item.text.value}}
+            </a>
+          </li>
+        </ul>
+        <div class="voter-info">
+          <a>Sample User</a><a>|</a>
+          <a>End Session</a>
+        </div>
+      </nav>
+    </ng-template>
+
+  </div>
+
+<!-- <h1>bigmenu is {{bigMenu}}</h1>
 <nav role="navigation">
+<ng-container *ngIf="bigMenu; else littleMenu">
+  <div class="big-menu">
+  <ng-container *ngTemplateOutlet="menulist context: {$implicit: menu}">
+  </ng-container>
+  </div>
+</ng-container>
+<ng-template #littleMenu>
   <div id="menuToggle">
-    <input #checkbox type="checkbox" (click)="onToggleMenu($event)" />
+    <input #checkbox type="checkbox"/>
     <span></span>
     <span></span>
     <span></span>
 
-    <ul id="menu" class="nav-menu">
-      <li *ngFor="let item of menu">
-        <a href="item.url">
-          {{item.text.value}}
-        </a>
-      </li>
-    </ul>
+    <ng-container *ngTemplateOutlet="menulist context: {$implicit: menu}">
+    </ng-container>
   </div>
-</nav>
+</ng-template>
+</nav> -->
 
 <div *ngIf="showPad">
   <div #wrapper class="display-box">
@@ -22,6 +75,16 @@
   </div>
 </div>
 
-<button class="close-menu" (click)="closeMenuButton()">
+<!-- <ng-template #menulist let-menu>
+    <ul id="menu" class="nav-menu">
+      <li *ngFor="let item of menu">
+        <a href="item.url">
+          {{item.text.value}}
+        </a>
+      </li>
+    </ul>
+</ng-template> -->
+
+<!-- <button class="close-menu" (click)="toggleMenuButton()">
   <i class="fa fa-coffee fa-2x"></i>Toggle the Menu
-</button>
+</button> -->
