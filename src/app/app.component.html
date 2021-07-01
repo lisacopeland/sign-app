@@ -15,55 +15,6 @@
       </div>   
     </div>    
 
-<!--     <ng-container *ngIf="smallScreen; else bigScreen">
-      <div class="menu-row">
-        <nav id="nav" role="navigation">
-          <div id="menuToggle">
-            <input #checkbox type="checkbox"/>
-            <span></span>
-            <span></span>
-            <span></span>
-        
-          <ul id="menu">
-            <li *ngFor="let item of menu">
-              <a href="item.url">
-                {{item.text.value}}
-              </a>
-            </li>
-          </ul>
-          </div>
-        </nav>
-
-        <div class="voter-info">
-          <a>Sample User</a><a>|</a>
-          <a>End Session</a>
-        </div>
-      </div>
-      
-    </ng-container>
-
-    <ng-template #bigScreen>
-      <div class="menu-row">
-        <nav>
-          <ul id="menu">
-            <li *ngFor="let item of menu">
-              <a href="item.url">
-                {{item.text.value}}
-              </a>
-            </li>
-          </ul>
-
-        </nav>
-        <div class="voter-info">
-          <a>Sample User</a><a>|</a>
-          <a>End Session</a>
-        </div>      
-      </div>      
-    </ng-template> -->
-
-
-
-
 <div *ngIf="showPad">
   <div #wrapper class="display-box">
     <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
