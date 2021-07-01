@@ -1,6 +1,21 @@
-  <div>
     <h2 class="element-invisible skip-focus">Main Menu</h2>
-    <ng-container *ngIf="smallScreen; else bigScreen">
+    <div class="menu-row">
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+      <ul class="menu">
+        <li *ngFor="let item of menu">
+          <a href="item.url">
+            {{item.text.value}}
+          </a>
+        </li>
+      </ul>
+      <div class="voter-info">
+        <a>Sample User</a><a>|</a>
+        <a>End Session</a>
+      </div>   
+    </div>    
+
+<!--     <ng-container *ngIf="smallScreen; else bigScreen">
       <div class="menu-row">
         <nav id="nav" role="navigation">
           <div id="menuToggle">
@@ -19,7 +34,6 @@
           </div>
         </nav>
 
-        <!-- The session label -->
         <div class="voter-info">
           <a>Sample User</a><a>|</a>
           <a>End Session</a>
@@ -28,7 +42,6 @@
       
     </ng-container>
 
-    <!-- Big Menu -->
     <ng-template #bigScreen>
       <div class="menu-row">
         <nav>
@@ -46,30 +59,10 @@
           <a>End Session</a>
         </div>      
       </div>      
-    </ng-template>
+    </ng-template> -->
 
-  </div>
 
-<!-- <h1>bigmenu is {{bigMenu}}</h1>
-<nav role="navigation">
-<ng-container *ngIf="bigMenu; else littleMenu">
-  <div class="big-menu">
-  <ng-container *ngTemplateOutlet="menulist context: {$implicit: menu}">
-  </ng-container>
-  </div>
-</ng-container>
-<ng-template #littleMenu>
-  <div id="menuToggle">
-    <input #checkbox type="checkbox"/>
-    <span></span>
-    <span></span>
-    <span></span>
 
-    <ng-container *ngTemplateOutlet="menulist context: {$implicit: menu}">
-    </ng-container>
-  </div>
-</ng-template>
-</nav> -->
 
 <div *ngIf="showPad">
   <div #wrapper class="display-box">
@@ -77,16 +70,6 @@
     </signature-pad>
   </div>
 </div>
-
-<!-- <ng-template #menulist let-menu>
-    <ul id="menu" class="nav-menu">
-      <li *ngFor="let item of menu">
-        <a href="item.url">
-          {{item.text.value}}
-        </a>
-      </li>
-    </ul>
-</ng-template> -->
 
 <!-- <button class="close-menu" (click)="toggleMenuButton()">
   <i class="fa fa-coffee fa-2x"></i>Toggle the Menu
