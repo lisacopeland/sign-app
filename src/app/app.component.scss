@@ -116,7 +116,7 @@
   }
 
   .menu-row .menu-icon .navicon {
-    background: #333;
+    background: white;
     display: block;
     height: 2px;
     position: relative;
@@ -126,7 +126,7 @@
 
   .menu-row .menu-icon .navicon:before,
   .menu-row .menu-icon .navicon:after {
-    background: #333;
+    background: white;
     content: "";
     display: block;
     /*   color: white; */
@@ -171,14 +171,15 @@
 
   .menu-row .menu-btn:checked ~ .menu-icon .navicon {
     background: transparent;
-    color: black;
   }
 
   .menu-row .menu-btn:checked ~ .menu-icon .navicon:before {
+    background-color: black;
     transform: rotate(-45deg);
   }
 
   .menu-row .menu-btn:checked ~ .menu-icon .navicon:after {
+    background-color: black;
     transform: rotate(45deg);
   }
 
