@@ -1,8 +1,8 @@
     <h2 class="element-invisible skip-focus">Main Menu</h2>
     <div class="menu-row">
-      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <input #menubtn class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-      <ul class="menu">
+      <ul #wholemenu class="menu">
         <li *ngFor="let item of menu">
           <a href="item.url">
             {{item.text.value}}

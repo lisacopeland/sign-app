@@ -1,5 +1,5 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad';
 
 @Component({
@@ -8,7 +8,8 @@ import { SignaturePad } from 'angular2-signaturepad';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // @ViewChild('checkbox', { static: true }) checkbox: ElementRef;
+  @ViewChild('menubtn', { static: true }) menuBtn: ElementRef;
+  @ViewChild('wholemenu', { static: true }) wholemenu: ElementRef;
   @ViewChild('wrapper', { read: ElementRef, static: false }) wrapper: ElementRef;
 
   @ViewChild(SignaturePad, { static: false }) signaturePad: SignaturePad;
@@ -34,16 +35,28 @@ export class AppComponent {
   ];
 
   constructor(private elRef: ElementRef,
+              private renderer: Renderer2,
               private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver
       .observe(['(min-width: 700px)'])
       .subscribe((state: BreakpointState) => {
         this.smallScreen = !state.matches;
       });
-              }
+
+    // this.checkBoxEl = this.menuBtn.nativeElement;
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if (e.target === this.menuBtn.nativeElement) {
+        console.log('this is the input');
+        this.menuBtn.nativeElement.click();
+      }
+      if (e.target !== this.menuBtn.nativeElement && e.target !== this.wholemenu.nativeElement) {
+        this.menuBtn.nativeElement.click();
+      }
+      });
+    }
 
   ngOnInit() {
-    // this.checkBoxEl = this.checkbox.nativeElement;
+
   }
 
   ngAfterViewInit() {
@@ -67,7 +80,7 @@ export class AppComponent {
   }
 
   closeMenuButton() {
-    // this.checkBoxEl.click();
+    this.checkBoxEl.click();
   }
 
   toggleMenuButton() {
