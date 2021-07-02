@@ -1,1 +1,15 @@
-<p>menu works!</p>
+    <div #menucomponent class="menu-row">
+      <input #menubtn class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+      <ul #menucard class="menu">
+        <li *ngFor="let item of menu">
+          <a (click)="onMenuChoice(item)">
+            {{item.text.value}}
+          </a>          
+        </li>
+      </ul>
+      <div *ngIf="sessionLabel" class="voter-info">
+        <a>{{sessionLabel}}</a><a>|</a>
+        <a (click)="onEndSession()">End Session</a>
+      </div>   
+    </div>   

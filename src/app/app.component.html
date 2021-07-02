@@ -1,19 +1,10 @@
     <h2 class="element-invisible skip-focus">Main Menu</h2>
-    <div class="menu-row">
-      <input #menubtn class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-      <ul #wholemenu class="menu">
-        <li *ngFor="let item of menu">
-          <a href="item.url">
-            {{item.text.value}}
-          </a>
-        </li>
-      </ul>
-      <div class="voter-info">
-        <a>Sample User</a><a>|</a>
-        <a>End Session</a>
-      </div>   
-    </div>    
+    <app-menu 
+      [menu]=menu 
+      [sessionLabel]=sessionLabel
+      (endSession)="endSession($event)"
+      (menuChoice)="menuChoice($event)">
+    </app-menu>
 
 <div *ngIf="showPad">
   <div #wrapper class="display-box">

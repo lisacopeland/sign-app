@@ -8,8 +8,7 @@ import { SignaturePad } from 'angular2-signaturepad';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('menubtn', { static: true }) menuBtn: ElementRef;
-  @ViewChild('wholemenu', { static: true }) wholemenu: ElementRef;
+
   @ViewChild('wrapper', { read: ElementRef, static: false }) wrapper: ElementRef;
 
   @ViewChild(SignaturePad, { static: false }) signaturePad: SignaturePad;
@@ -25,6 +24,7 @@ export class AppComponent {
     'throttle': 5
   };
 
+  sessionLabel = 'Maggy McGee';
   menu = [
     { "url": "/home", "text": { "value": "Home", "translations": {} } },
     {
@@ -35,7 +35,6 @@ export class AppComponent {
   ];
 
   constructor(private elRef: ElementRef,
-              private renderer: Renderer2,
               private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver
       .observe(['(min-width: 700px)'])
@@ -44,15 +43,7 @@ export class AppComponent {
       });
 
     // this.checkBoxEl = this.menuBtn.nativeElement;
-    this.renderer.listen('window', 'click', (e: Event) => {
-      if (e.target === this.menuBtn.nativeElement) {
-        console.log('this is the input');
-        this.menuBtn.nativeElement.click();
-      }
-      if (e.target !== this.menuBtn.nativeElement && e.target !== this.wholemenu.nativeElement) {
-        this.menuBtn.nativeElement.click();
-      }
-      });
+
     }
 
   ngOnInit() {
@@ -76,20 +67,6 @@ export class AppComponent {
         this.updateDisplay();
       // })
 
-    }
-  }
-
-  closeMenuButton() {
-    this.checkBoxEl.click();
-  }
-
-  toggleMenuButton() {
-    console.log('menu toggled! ');
-    this.bigMenu = !this.bigMenu;
-    if (!this.bigMenu) {
-      setTimeout(() => {
-        // this.checkBoxEl = this.checkbox.nativeElement;
-      }, 100)
     }
   }
 
@@ -123,6 +100,14 @@ export class AppComponent {
       this.signaturePad.resizeCanvas();
 
     }
+  }
+
+  endSession($event) {
+    console.log('got the endsession event');
+  }
+
+  menuChoice($event) {
+    console.log('got the menuChoice event', $event);
   }
 
 
