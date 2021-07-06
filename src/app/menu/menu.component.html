@@ -1,6 +1,6 @@
     <div #menucomponent class="menu-row">
       <input #menubtn class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+      <label #menulbl class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
       <ul #menucard class="menu">
         <li *ngFor="let item of menu">
           <a (click)="onMenuChoice(item)">
